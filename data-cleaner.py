@@ -26,17 +26,20 @@ for file in os.listdir("C:/Users/pabou/Documents/GitHub/Web-Scraper/data"):
         data.dropna(how="any",inplace=True)
         data.columns=header
         print("Formatting date-time")
+        
         data['Fee'].apply(simplify)
         data['Amount'].apply(simplify)
         data.columns=header
         datetime=data["Date"].map(str)+" "+data["Time"]
         data.insert(3,column="Date-Time",value=datetime)
-
-        data["Time"]=pd.to_datetime(data["Time"])
+        
+        data["Time"]=pd.to_datetime(["Time"])
         data['Time'] = data['Time'].dt.time
         data["Date"]=pd.to_datetime(data["Date"])
 
         data["Date-Time"]=pd.to_datetime(data["Date-Time"])
+        # data['Week'] = data['Date-Time'].dt.strftime('%Y-%V')
         data.to_csv("Cleaned_"+file)
+        break
 
 
