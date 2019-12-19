@@ -18,8 +18,3 @@ for file in os.listdir("C:/Users/pabou/Documents/GitHub/Web-Scraper/data/cleaned
         dataset["Month"]=pd.DatetimeIndex(dataset['Date-Time']).month
         print(dataset.head())
         dataset.to_csv("Cleaned2_"+file)
-
-# keys=dataset["Week"].value_counts().keys().tolist()
-# vals=dataset["Week"].value_counts().tolist()
-
-# plt.plot(keys,vals,'o')
