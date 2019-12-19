@@ -10,7 +10,7 @@ gracefulFs.gracefulify(fs);
   }
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto("https://online-service-corp.com/index.shtml", {
+  await page.goto("URL", {
     waitUntil: "networkidle0"
   });
 
@@ -28,12 +28,7 @@ gracefulFs.gracefulify(fs);
     );
     await delay(3000);
     let itemNum = m.toString();
-    // const fileName = await page.$eval(
-    //   "body > form > table:nth-child(3) > tbody > tr:nth-child(" +
-    //     itemNum +
-    //     ") > td:nth-child(2)",
-    //   element => element.textContent
-    // );
+
     console.log("Now processing: " + itemNum.toString());
     await page.click(
       "body > form > table:nth-child(3) > tbody > tr:nth-child(" +
@@ -63,9 +58,7 @@ gracefulFs.gracefulify(fs);
         return tds.map(td => td.textContent);
       })
     );
-    // await delay(1500);
-    // let options = { flags: "a", encoding: null, mode: 0666 };
-    // let writeStream = fs.createWriteStream("output.csv", options);
+
     console.log("Writing to file");
     await delay(3000);
     for (var i = 0; i < data.length; i++) {
