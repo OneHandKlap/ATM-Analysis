@@ -40,6 +40,5 @@ for file in os.listdir("C:/Users/pabou/Documents/GitHub/Web-Scraper/data"):
         data["Date-Time"]=pd.to_datetime(data["Date-Time"])
         # data['Week'] = data['Date-Time'].dt.strftime('%Y-%V')
         data.to_csv("Cleaned_"+file)
-        break
 
 
