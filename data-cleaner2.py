@@ -3,6 +3,8 @@ import datetime
 import os
 import matplotlib as plt
 
+#Customer requested other functionality, so a second pass was required for date formatting
+
 os.chdir("C:/Users/pabou/Documents/Github/Web-Scraper/data/cleaned")
 for file in os.listdir("C:/Users/pabou/Documents/GitHub/Web-Scraper/data/cleaned"):
     if file.endswith(".csv"):
