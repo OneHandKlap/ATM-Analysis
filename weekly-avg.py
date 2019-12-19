@@ -36,12 +36,19 @@ for file in os.listdir("C:/Users/pabou/Documents/GitHub/Web-Scraper/data/cleaned
         for i in week_sum:
             weekly_cash_avg+=week_sum[i]
         weekly_cash_avg=weekly_cash_avg/len(week_sum)
-        f=open("C:/Users\pabou\Documents\GitHub\Web-Scraper\data\Cleaned\cleaned2\overview\overview.csv","a")
-        f.write(filename+","+str(num_week_avg)+","+str(weekly_cash_avg)+"\n")
+        week_num_avg={0:[],1:[],2:[],3:[]}
+        for i in week_sum:
+            week_num_avg[i%4].append(week_sum[i])
 
-        axs[1].set(xlabel="Weeks",ylabel="Amount of Cash")
-        axs[1].plot(list(week_sum.keys()),list(week_sum.values()),'o')
-        z = numpy.polyfit(list(week_sum.keys()), list(week_sum.values()), 1)
-        p = numpy.poly1d(z)
-        axs[1].plot(list(week_sum.keys()),p(list(week_sum.keys())),"r--")
-        plt.savefig(filename+"_weekly-avg.png")
+        print(week_num_avg)
+
+
+        f=open("C:/Users\pabou\Documents\GitHub\Web-Scraper\data\Cleaned\cleaned2\overview\overview.csv","a")
+        f.write(filename+","+str(num_week_avg)+","+str(weekly_cash_avg)+","+str(sum(week_num_avg[1])/len(week_num_avg[1]))+","+str(sum(week_num_avg[2])/len(week_num_avg[2]))+","+str(sum(week_num_avg[3])/len(week_num_avg[3]))+","+str(sum(week_num_avg[0])/len(week_num_avg[0]))+"\n")
+
+        # axs[1].set(xlabel="Weeks",ylabel="Amount of Cash")
+        # axs[1].plot(list(week_sum.keys()),list(week_sum.values()),'o')
+        # z = numpy.polyfit(list(week_sum.keys()), list(week_sum.values()), 1)
+        # p = numpy.poly1d(z)
+        # axs[1].plot(list(week_sum.keys()),p(list(week_sum.keys())),"r--")
+        # plt.savefig(filename+"_weekly-avg.png")
