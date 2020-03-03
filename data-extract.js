@@ -17,11 +17,11 @@ gracefulFs.gracefulify(fs);
   for (var m = 1; m < 15; m++) {
     await page.type(
       "body > form > table > tbody > tr:nth-child(1) > td:nth-child(2) > input[type=text]",
-      "slater"
+      "USERNAME"
     );
     await page.type(
       "body > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input[type=password]",
-      "atm"
+      "PASSWORD"
     );
     await page.click(
       "body > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > a > input[type=submit]"
